@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.gmall.product.mapper.BaseAttrInfoMapper">
+
+    <select id="selectAttrInfoList" resultMap="selectAttrInfoListMap">
+        select
+            bi.id as bi_Id , bv.id as bv_id,bi.*,bv.*
+        from
+            base_attr_info bi,base_attr_value bv
+        where
+            bi.id = bv.attr_id
+        and
+            bi.category_level = #{category_level} and bi.category_id =#{category_id}
+    </select>
+    <resultMap id="selectAttrInfoListMap" type="com.atguigu.gmall.model.product.BaseAttrInfo" autoMapping="true">
+        <id property="id" column="bi_Id"></id>
+        <collection property="attrValueList" ofType="com.atguigu.gmall.model.product.BaseAttrValue" autoMapping="true">
+            <id property="id" column="bv_id"></id>
+        </collection>
+    </resultMap>
+<!--    <select id="selectAttrInfoList" resultMap="selectAttrInfoListMap">-->
+<!--        select-->
+<!--            bi.id as bi_Id , bv.id as bv_id,bi.*,bv.*-->
+<!--        from-->
+<!--            base_attr_info bi,base_attr_value bv-->
+<!--        where-->
+<!--            bi.id = bv.attr_id-->
+<!--        and-->
+<!--            bi.category_level = #{category_level} and bi.category_id =#{category_id}-->
+<!--    </select>-->
+<!--    <resultMap id="selectAttrInfoListMap" type="com.atguigu.gmall.model.product.BaseAttrInfo" autoMapping="true">-->
+<!--        <id column="bi_id" property="id"></id>-->
+<!--        <collection property="attrValueList" ofType="com.atguigu.gmall.model.product.BaseAttrValue" autoMapping="true">-->
+<!--            <id column="bv_id" property="id"></id>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+
+</mapper>
