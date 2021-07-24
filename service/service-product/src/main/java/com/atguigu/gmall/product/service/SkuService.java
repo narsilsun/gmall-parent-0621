@@ -15,4 +15,8 @@ public interface SkuService {
     BigDecimal getPrice(Long skuId);
 
     SkuInfo getSkuInfo(Long skuId);
+
+    void cancelSale(Long skuId);
+
+    void onSale(Long skuId);
 }

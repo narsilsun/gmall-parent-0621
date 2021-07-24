@@ -4,19 +4,25 @@ import com.atguigu.gmall.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RequestMapping("/api/item")
 @RestController
 @CrossOrigin
+
 public class ItemApiController {
     @Autowired
     ItemService itemService;
 
     @GetMapping("getItem/{skuId}")
-    public Map<String, Object> getItem(@PathVariable("skuId") Long skuId){
+    public Map<String, Object> getItem(@PathVariable("skuId") Long skuId, HttpServletRequest request){
+
+        String userId = request.getHeader("userId");
+
         //封装 item页面所需数据接口
         Map<String, Object> map = itemService.getItem(skuId);
+
         return map;
     }
 }

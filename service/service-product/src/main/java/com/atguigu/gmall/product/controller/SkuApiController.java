@@ -24,6 +24,21 @@ public class SkuApiController {
     @Autowired
     private SupService supService;
 
+    @RequestMapping("cancelSale/{skuId}")
+    public Result cancelSale(@PathVariable("skuId") Long skuId){
+
+        skuService.cancelSale(skuId);
+
+        return Result.ok();
+    }
+
+    @RequestMapping("onSale/{skuId}")
+    public Result onSale(@PathVariable("skuId") Long skuId){
+
+        skuService.onSale(skuId);
+
+        return Result.ok();
+    }
 
     //分页显示
     @RequestMapping("/list/{pageNo}/{pageSize}")

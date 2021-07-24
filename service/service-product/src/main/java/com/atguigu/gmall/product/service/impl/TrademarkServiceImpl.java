@@ -20,4 +20,9 @@ public class TrademarkServiceImpl implements TrademarkService {
         List<BaseTrademark> baseTrademarks = baseTrademarkMapper.selectList(null);
         return baseTrademarks;
     }
+
+    @Override
+    public BaseTrademark getTrademarkById(Long tmId) {
+        return baseTrademarkMapper.selectById(tmId);
+    }
 }

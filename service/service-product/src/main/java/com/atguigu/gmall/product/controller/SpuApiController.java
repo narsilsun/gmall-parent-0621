@@ -25,6 +25,7 @@ public class SpuApiController {
     @RequestMapping("/{pageNo}/{size}")
     public Result spuList(@PathVariable("pageNo") Long pageNo,@PathVariable("size") Long size,Long category3Id){
         IPage<SpuInfo> page = new Page<>();
+
         page.setCurrent(pageNo);
         page.setSize(size);
         IPage<SpuInfo> supInfoIPage = supService.spuList(page,category3Id);

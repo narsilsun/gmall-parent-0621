@@ -2,6 +2,7 @@ package com.atguigu.gmall.product.service.impl;
 
 import com.atguigu.gmall.common.constant.RedisConst;
 import com.atguigu.gmall.config.GmallCache;
+import com.atguigu.gmall.list.client.ListFeignClient;
 import com.atguigu.gmall.model.product.SkuAttrValue;
 import com.atguigu.gmall.model.product.SkuImage;
 import com.atguigu.gmall.model.product.SkuInfo;
@@ -43,7 +44,8 @@ public class SkuServiceImpl implements SkuService {
     @Autowired
     private RedisTemplate redisTemplate;
 
-
+    @Autowired
+    ListFeignClient listFeignClient;
     @Override
     public IPage<SkuInfo> getSkuList(IPage<SkuInfo> skuInfoPage) {
 
@@ -101,6 +103,35 @@ public class SkuServiceImpl implements SkuService {
         SkuInfo skuInfo = getSkuInfoByIdFromDB(skuId);
 
         return skuInfo;
+    }
+
+    /**
+     * 下架
+     * @param skuId
+     */
+    @Override
+    public void cancelSale(Long skuId) {
+        SkuInfo skuInfo = new SkuInfo();
+        skuInfo.setIsSale(0);
+        skuInfo.setId(skuId);
+        skuServiceMapper.updateById(skuInfo);
+        //远程调用listFeign
+        listFeignClient.cancelSale(skuId);
+
+    }
+
+    /**
+     * 上架
+     * @param skuId
+     */
+    @Override
+    public void onSale(Long skuId) {
+        SkuInfo skuInfo = new SkuInfo();
+        skuInfo.setIsSale(1);
+        skuInfo.setId(skuId);
+        skuServiceMapper.updateById(skuInfo);
+
+        listFeignClient.onSale(skuId);
     }
 
     private SkuInfo getSkuInfoBak(Long skuId) {

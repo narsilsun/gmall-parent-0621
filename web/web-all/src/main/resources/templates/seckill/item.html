@@ -616,7 +616,6 @@
             },
 
             queue() {
-                debugger
                 seckill.getSeckillSkuIdStr(this.skuId).then(response => {
                     var skuIdStr = response.data.data
                     window.location.href = '/seckill/queue.html?skuId='+this.skuId+'&skuIdStr='+skuIdStr

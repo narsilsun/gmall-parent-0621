@@ -2,6 +2,7 @@ package com.atguigu.gmall.item.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.gmall.item.service.ItemService;
+import com.atguigu.gmall.list.client.ListFeignClient;
 import com.atguigu.gmall.model.product.BaseCategoryView;
 import com.atguigu.gmall.model.product.SkuInfo;
 import com.atguigu.gmall.model.product.SpuSaleAttr;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,8 @@ public class ItemServiceImpl implements ItemService {
     //由product调数据库
     @Autowired
     ProductFeignClient productFeignClient;
+    @Autowired
+    ListFeignClient listFeignClient;
     //线程池
     @Autowired
     ThreadPoolExecutor threadPoolExecutor;
@@ -36,6 +40,8 @@ public class ItemServiceImpl implements ItemService {
         Map<String, Object> map = getStringObjectMapTread(skuId);
         long end = System.currentTimeMillis();
         System.out.println(end - start);
+        //热度值
+        listFeignClient.hotScore(skuId);
         return map;
     }
 
@@ -129,4 +135,6 @@ public class ItemServiceImpl implements ItemService {
         map.put("spuSaleAttrList", spuSaleAttrList);
         return map;
     }
+
+
 }

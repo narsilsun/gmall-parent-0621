@@ -16,6 +16,12 @@
         <module>service-product</module>
         <module>service-item</module>
         <module>service-list</module>
+        <module>service-cart</module>
+        <module>service-user</module>
+        <module>service-order</module>
+        <module>service-payment</module>
+        <module>service-mq</module>
+        <module>service-seckill</module>
     </modules>
 
 

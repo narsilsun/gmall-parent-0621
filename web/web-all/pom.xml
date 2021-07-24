@@ -24,6 +24,39 @@
             <artifactId>service-list-client</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-cart-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-order-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-order-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-user-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-order-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>service-seckill-client</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

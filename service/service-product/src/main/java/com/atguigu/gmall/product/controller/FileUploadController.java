@@ -57,6 +57,6 @@ public class FileUploadController {
         System.out.println(url);
         return Result.ok(url);
     }
-    }
+}
 
 
